@@ -1,0 +1,52 @@
+---
+---
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>Coda – írások PDF-ben</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            max-width: 700px;
+            margin: 40px auto;
+            line-height: 1.6;
+        }
+        h1 {
+            text-align: center;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        a {
+            text-decoration: none;
+            color: #0066cc;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Coda – írások PDF-ben</h1>
+
+<ul>
+{% assign coda_files = site.static_files | sort: "name" %}
+{% for file in coda_files %}
+  {% if file.path contains '/Coda/' %}
+    <li>
+      <a href="{{ file.path | relative_url }}">
+        {{ file.name }}
+      </a>
+    </li>
+  {% endif %}
+{% endfor %}
+</ul>
+
+</body>
+</html>
